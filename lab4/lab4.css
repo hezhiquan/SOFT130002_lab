@@ -1,0 +1,31 @@
+
+h1 { font-size: 3em; font-weight: bold; margin-top: 0;}
+
+div#topHeaderRow {
+   font-size: 0.9em;
+}
+
+.price { 
+  color:red;
+  font-size: 20px;
+}
+
+.similarTitle {  }
+
+.cartText span{
+color: gold;
+}
+
+footer {
+   margin-top: 1em;
+   background-color: #E7E7E7;
+
+}
+
+.tight-form-group {  }
+
+#copyrightRow {
+  color: white;
+  margin-top: 5px;
+  background-color: rgba(0, 0, 0, 0.94);
+}
