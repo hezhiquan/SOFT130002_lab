@@ -158,24 +158,6 @@
               showLine(i);
             }
           })();
-
-          //计算子费用
-          function sub() {
-            var all=0;
-            for(let i=0;i<2;i++){
-             all+=eval("$quantity"+(i+1))*eval("$price"+(i+1));
-            }
-            return all;
-          }
-          var ship=sub()>1000?100:40;
-// alert(sub()*0.1);
-//           document.getElementById("subtotal").innerHTML="$"+sub();
-//           // alert(1);
-//           document.getElementById("tax").innerHTML="$"+(sub()*0.1);
-//           // alert(2);
-//           document.getElementById("shipping").innerHTML="$"+ship;
-//           document.getElementById("grand").innerHTML="$"+(sub()*1.1+ship);
-
         </script>
          <!-- 这是你需要修改的地方 -->
          <!-- 本来是下面这样👇 -->
@@ -211,24 +193,41 @@
 
          <tr class="success strong" >
             <td colspan="4" class="moveRight">Subtotal</td>
-           <td id="subtotal" ><script>document.write(sub())</script></td>
+           <td id="subtotal" > </td>
          </tr>
          <tr class="active strong">
             <td colspan="4" class="moveRight">Tax</td>
-           <td id="tax"><script>document.write(0.1*sub())</script></td>
+           <td id="tax"></td>
          </tr>  
          <tr class="strong">
             <td colspan="4" class="moveRight">Shipping</td>
-            <td id="shipping"><script>document.write(ship)</script></td>
+            <td id="shipping"></td>
          </tr> 
          <tr class="warning strong text-danger">
             <td colspan="4" class="moveRight">Grand Total</td>
-            <td id="grand"><script>document.write(sub()+(0.1*sub())+ship)</script></td>
+            <td id="grand"></td>
          </tr>    
          <tr >
             <td colspan="4" class="moveRight"><button type="button" class="btn btn-primary" >Continue Shopping</button></td>
             <td><button type="button" class="btn btn-success" >Checkout</button></td>
          </tr>
+        <script>
+          //计算子费用
+          function sub() {
+            var all=0;
+            for(let i=0;i<2;i++){
+              all+=eval("$quantity"+(i+1))*eval("$price"+(i+1));
+            }
+            return all;
+          }
+          var ship=sub()>1000?0:40;
+          document.getElementById("subtotal").innerHTML="$"+sub();
+          // alert(1);
+          document.getElementById("tax").innerHTML="$"+(sub()*0.1);
+          // alert(2);
+          document.getElementById("shipping").innerHTML="$"+ship;
+          document.getElementById("grand").innerHTML="$"+(sub()*0.1+sub()+ship);
+        </script>
       </table>         
 
 </div>  <!-- end container -->
