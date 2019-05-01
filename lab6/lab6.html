@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head >
+   <meta charset="utf-8">
+   <title>Chapter 9 - Share Your Travels</title>
+
+   <link rel="stylesheet" href="lab6.css" />
+   <script type="text/javascript" src="lab6.js"></script>   
+</head>
+<body>
+<header>
+    <h2>Share Your Travels</h2>
+    <nav><img src="images/menu.png"></nav>
+</header>
+<main>
+    <figure id="featured">
+        <img id="mom" src="images/medium/5855774224.jpg" title="Battle"  onmouseover="btnIn()" onmouseout="btnOut()"/>
+        <figcaption id="fig">Battle</figcaption>
+    </figure>
+    <div id="thumbnails">
+        <img src="images/small/5855774224.jpg" title="Battle" onclick="changeP1()"/>
+        <img src="images/small/5856697109.jpg" title="Luneburg" onclick="changeP2()"/>
+        <img src="images/small/6119130918.jpg" title="Bermuda" onclick="changeP3()"/>
+        <img src="images/small/8711645510.jpg" title="Athens" onclick="changeP4()"/>
+        <img src="images/small/9504449928.jpg" title="Florence" onclick="changeP5()"/>
+    </div>
+  <script>
+    function changeP22() {
+      var momPicture=document.getElementById("mom");
+      if(document.onreadystatechange()) {
+        momPicture.src = "images/medium/5856697109.jpg";
+        momPicture.title = "Luneburg";
+      }
+
+    }
+  </script>
+</main>
+</body>
+</html>
