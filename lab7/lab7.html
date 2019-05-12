@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>Chapter 10</title>
+<link rel="stylesheet" href="lab7.css">
+<script src="http://code.jquery.com/jquery-3.1.0.min.js">
+
+</script>
+</head>    
+<body class="tiled">
+<header>
+    <h1 id="h1">Art Filters</h1>
+</header>
+<main>
+    <div id="sliderBox">
+        <form>
+          <label>Opacity: </label><p><input type="range" id="sliderOpacity" min="0" max="100" value="100" class="sliders" /> <span id="numOpacity">100</span>%</p>
+           <p><label>Saturation: </label><input type="range" id="sliderSaturation" min="1" max="300" value="100" class="sliders"/> <span id="numSaturation">100</span>%</p>
+           <p><label>Brightness: </label><input type="range" id="sliderBrightness" min="0" max="300" value="100" class="sliders" /> <span id="numBrightness">100</span>%</p>
+           <p><label>Hue Rotate: </label><input type="range" id="sliderHue" min="0" max="360" value="0" class="sliders" /> <span id="numHue">0</span>deg</p>
+           <p><label>Grayscale: </label><input type="range" id="sliderGray" min="0" max="100" value="0" class="sliders"/> <span id="numGray">0</span>%</p>
+           <p><label>Blur: </label><input type="range" id="sliderBlur" min="0" max="10" value="0" class="sliders" /> <span id="numBlur">0</span>px</p>
+           <p><button id="resetFilters" type="button">Reset</button> </p>
+        </form>    
+    </div>
+    <figure id="imgManipulated">
+        <img id="picAll" src="images/medium/painting1.jpg" alt="Still Life with Flowers in a Glass Vase" title="Jan Davidsz. de Heem, 1650 - 1683" >
+        <figcaption id="imgInfo">
+          <em>Still Life with Flowers in a Glass Vase</em> <br>
+          Jan Davidsz. de Heem, 1650 - 1683
+        </figcaption>
+    </figure>   
+    <div id="thumbBox">
+        <div><img id="pic1" src="images/small/painting1.jpg"  alt="Still Life with Flowers in a Glass Vase" title="Jan Davidsz. de Heem, 1650 - 1683"/></div>
+        <div><img id="pic2" src="images/small/painting2.jpg"  alt="Portrait of Alida Christina Assink" title="Jan Adam Kruseman, 1833"/></div>
+        <div><img id="pic3" src="images/small/painting3.jpg"  alt="Self-portrait" title="Vincent van Gogh, 1887"/></div>
+        <div><img id="pic4" src="images/small/painting4.jpg"  alt="William II, Prince of Orange, and his Bride, Mary Stuart" title="Anthony van Dyck, 1641"/></div>
+        <div><img id="pic5" src="images/small/painting5.jpg"  alt="Milkmaid" title="Johannes Vermeer, c. 1660"/></div>
+    </div>
+</main>
+<script>
+$(document).ready(function(){
+
+  $("#pic5,#pic1,#pic2,#pic3,#pic4,#pic5").click(function () {
+    var that=this;
+    $("#picAll").attr({
+      "src":$(that)[0].src.replace("small","medium"),
+      "alt":$(that).attr("alt"),
+      "title":$(that).attr("title")
+    });
+    $("#imgInfo").html("<em>"+$("#picAll").attr("alt")+"<em><br >"+$("#picAll").attr("title"));
+  });
+
+$("#sliderOpacity,#sliderSaturation,#sliderBrightness,#sliderHue,#sliderGray,#sliderBlur").on("input",function () {
+  //显示进度条的值
+  $("#numOpacity").text($("#sliderOpacity").val());
+  $("#numSaturation").text($("#sliderSaturation").val());
+  $("#numBrightness").text($("#sliderBrightness").val());
+  $("#numHue").text($("#sliderHue").val());
+  $("#numGray").text($("#sliderGray").val());
+  $("#numBlur").text($("#sliderBlur").val());
+  //对照片应用滤镜
+  $("#picAll").css(
+    "filter","opacity("+ ($("#sliderOpacity").val()/100) +")"+" saturate("+($("#sliderSaturation").val()/100)+") "+"brightness("+($("#sliderBrightness").val()/100)+")"
+    +" hue-rotate("+$("#sliderHue").val()+"deg)"+" grayscale("+($("#sliderGray").val()/100)+") "+" blur("+$("#sliderBlur").val()+"px)"
+  );
+});
+  $("#resetFilters").click(function () {
+    $("#picAll").css("filter","none");
+  });
+});
+</script>
+</body>   
+</html>
